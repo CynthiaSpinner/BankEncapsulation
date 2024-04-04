@@ -19,7 +19,7 @@ namespace BankEncapsulation
             
             Console.WriteLine($"Deposit Amount: +{amount}");
             _balance = _balance + amount;
-            Console.WriteLine(_balance);
+            Console.WriteLine($"New Balance: {_balance}");
             return _balance;
         }
 
@@ -37,7 +37,7 @@ namespace BankEncapsulation
             
             Console.WriteLine($"Withdrawal Amount: -{amount}");
             _balance = _balance - amount;
-            Console.WriteLine(_balance);
+            Console.WriteLine($"New Balance: {_balance}");
             return _balance;
         }
 
@@ -53,11 +53,30 @@ namespace BankEncapsulation
             else 
             {
                 Console.WriteLine("Wrong Pin");
-                Pin();
-                return false;
+                
+                return Pin();
             }
         }
         
+        public bool YesNo()
+        {
+            Console.WriteLine("Would you like to go to the main screen for another transaction? Please type Yes or No...");
+            string yesOrNo = Console.ReadLine();
+            if (yesOrNo == "No")
+            {
+                Console.WriteLine("Goodbye!");
+                return false;
+            }
+            else if (yesOrNo == "Yes")
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input! Try Again... ");
+                return YesNo();
+            }
+        }
 
     }
 }
