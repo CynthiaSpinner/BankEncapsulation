@@ -11,18 +11,24 @@ namespace BankEncapsulation
             Console.WriteLine($"Welcome to Cynthia's Union Bank\n -------------------------------");
 
             Console.WriteLine($"What would you like to do today?\n Deposit\t Withdraw\t Check Balance");
+            string userInput = Console.ReadLine();
+            account.Pin();
+             
 
-            Console.ReadLine();
+            if ( userInput == "Balance")
+            {
+                account.GetBalance();
+            }
+            
+            if ( userInput == "Withdraw")
+            {
+                account.Withdraw();
+            }
+            if ( userInput == "Deposit")
+            {
+                account.Deposit();
+            }
 
-            account.GetBalance();
-
-            account.Deposit(550.34);
-
-            account.GetBalance();
-
-            account.Withdraw(34.23);
-
-            account.GetBalance();
             
         }
 
