@@ -12,11 +12,27 @@ namespace BankEncapsulation
 
             Console.WriteLine($"Welcome to Cynthia's Union Bank\n -------------------------------");
 
+            Pin();
 
             Operations(account);
                                    
         }
+        private static bool Pin()
+        {
+            Console.WriteLine("Please Enter your Pin");
+            var number = int.Parse(Console.ReadLine());
 
+            if (number == 1234)
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Wrong Pin");
+
+                return Pin();
+            }
+        }
         static void Operations(BankAccount account)
         {
             
@@ -26,21 +42,21 @@ namespace BankEncapsulation
             string userInput = Console.ReadLine();
             
 
-            if (userInput == "Balance")
+            if (userInput?.ToLower() is "check balance" or "balance")
             {
-                account.Pin();
+                
                 account.GetBalance();
 
             }
 
-            else if (userInput == "Withdraw")
+            else if (userInput == "withdraw")
             {
-                account.Pin();
+                
                 account.Withdraw();
             }
-            else if (userInput == "Deposit")
+            else if (userInput == "deposit")
             {
-                account.Pin();
+                
                 account.Deposit();
             }
      
